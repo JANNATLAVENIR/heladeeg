@@ -1,0 +1,33 @@
+{
+  "name": "heladeeg",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:expo": "node scripts/start-expo.mjs",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@esbuild/win32-x64": "^0.28.2",
+    "@supabase/supabase-js": "^2.117.2",
+    "expo": "~57.0.26",
+    "expo-status-bar": "~57.0.1",
+    "lucide-react": "^0.453.0",
+    "puppeteer": "^25.12.0",
+    "puppeteer-core": "^25.12.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-webview": "13.16.1",
+    "react-router-dom": "^6.27.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "vite": "^5.4.10"
+  }
+}

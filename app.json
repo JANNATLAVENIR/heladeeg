@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "HelAdeeg",
+    "slug": "heladeeg",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "android": {
+      "package": "so.heladeeg.app"
+    },
+    "ios": {
+      "bundleIdentifier": "so.heladeeg.app"
+    },
+    "plugins": [
+      "expo-status-bar"
+    ]
+  }
+}
