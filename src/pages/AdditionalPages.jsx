@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import {
   ArrowLeft, ArrowRight, BadgeCheck, Bell, BriefcaseBusiness, Check, CheckCircle2,
   ChevronRight, Clock3, FileText, Flag, HelpCircle, Inbox, LockKeyhole, MapPin,
-  Plus, Search, Shield, ShieldCheck, Star, Trash2, UserRound, Wrench, X,
+  Eye, EyeOff, Plus, Search, Shield, ShieldCheck, Star, Trash2, UserRound, Wrench, X,
 } from 'lucide-react'
 import { useApp } from '../context/AppContext'
 import { backend } from '../lib/api'
@@ -50,8 +50,10 @@ export function LoginPage({ admin = false }) {
   const { login, offlinePreview, backendConfigured } = useApp()
   const { language, t } = useLanguage()
   const navigate = useNavigate()
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState(() => localStorage.getItem('heladeeg-remember-email') || '')
   const [password, setPassword] = useState('')
+  const [remember, setRemember] = useState(() => Boolean(localStorage.getItem('heladeeg-remember-email')))
+  const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [resetLoading, setResetLoading] = useState(false)
@@ -66,6 +68,8 @@ export function LoginPage({ admin = false }) {
       return
     }
     if (offlinePreview) { setError(t('login.offline')); return }
+    if (remember && email.trim()) localStorage.setItem('heladeeg-remember-email', email.trim())
+    else localStorage.removeItem('heladeeg-remember-email')
     setLoading(true)
     try { await login(email.trim(), password); navigate(admin ? '/admin' : '/') }
     catch (e) { setError(e.code === 'ACCOUNT_PENDING' ? (language === 'en' ? 'Your account is waiting for admin approval.' : language === 'ar' ? 'حسابك ينتظر موافقة المسؤول.' : 'Akoonkaagu wuxuu sugayaa ansixinta admin-ka.') : e.code === 'ACCOUNT_REJECTED' ? (language === 'en' ? 'Your account was not approved. Contact support for help.' : language === 'ar' ? 'لم تتم الموافقة على حسابك. تواصل مع الدعم.' : 'Akoonka lama ansixin. La xiriir taageerada.') : e.message?.toLowerCase().includes('invalid login credentials') ? t('login.error.credentials') : e.message || (language === 'en' ? 'Login failed.' : language === 'ar' ? 'فشل تسجيل الدخول.' : 'Soo galiddu way fashilantay.')) }
@@ -81,30 +85,22 @@ export function LoginPage({ admin = false }) {
     finally { setResetLoading(false) }
   }
 
-  return <div className="login-page">
-    <div className="card login-card">
-      <div className="login-mark mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary-600 text-lg font-extrabold text-white">H</div>
-      <PageHeading eyebrow={admin ? (language === 'en' ? 'HelAdeeg · Admin' : language === 'ar' ? 'HelAdeeg · الإدارة' : 'HelAdeeg · maamulka') : t('login.welcome')} title={admin ? t('login.admin') : t('login.title')} description={admin ? t('login.admin.description') : t('login.description')} />
+  return <div className="login-page login-page--editorial">
+    <div className="login-editorial-photo" aria-hidden="true" />
+    <div className="login-card login-card--editorial">
+      <PageHeading eyebrow={admin ? (language === 'en' ? 'HelAdeeg · Admin' : language === 'ar' ? 'HelAdeeg · الإدارة' : 'HelAdeeg · maamulka') : ''} title={admin ? t('login.admin') : (language === 'en' ? 'Welcome Back' : language === 'ar' ? 'مرحبًا بعودتك' : 'Soo Dhawoow')} description={admin ? t('login.admin.description') : (language === 'en' ? 'Log in to your HELADEEG account to access trusted service professionals near you.' : language === 'ar' ? 'سجل الدخول إلى حسابك للعثور على محترفي الخدمات الموثوقين بالقرب منك.' : 'Gal akoonkaaga HELADEEG si aad u hesho xirfadlayaal adeeg oo lagu kalsoon yahay oo kuu dhow.')} />
       {!backendConfigured && <DemoNote>{import.meta.env.VITE_DEMO_MODE === 'true' ? 'Demo mode ayaa shaqaynaya; xogtu server kuma kaydsamayso.' : 'Supabase wali lama dejin. Geli keys-ka .env.local si aad u soo gasho.'}</DemoNote>}
-      <form onSubmit={submit} className="space-y-4" noValidate>
-        <TextField label={t('login.email')} type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="name@email.com" autoComplete="username" required />
-        <TextField label={t('login.password')} type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder={t('login.password.placeholder')} autoComplete="current-password" />
-        {error && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</p>}
-        {message && <p role="status" className="rounded-lg bg-blue-50 p-3 text-sm text-blue-700">{message}</p>}
-        <button className={`${button} w-full`} disabled={loading}>{loading ? t('login.wait') : admin ? t('login.admin') : t('login.submit')}</button>
+      <form onSubmit={submit} className="login-editorial-form" noValidate>
+        <label className="login-editorial-field"><span className="sr-only">{t('login.email')}</span><UserRound size={21} strokeWidth={1.5} /><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder={language === 'en' ? 'Email address' : language === 'ar' ? 'البريد الإلكتروني' : 'Iimayl'} autoComplete="username" required /></label>
+        <label className="login-editorial-field"><span className="sr-only">{t('login.password')}</span><LockKeyhole size={21} strokeWidth={1.5} /><input type={showPassword ? 'text' : 'password'} value={password} onChange={(event) => setPassword(event.target.value)} placeholder={language === 'en' ? 'Password' : language === 'ar' ? 'كلمة المرور' : 'Eray-sir'} autoComplete="current-password" /><button type="button" className="login-password-toggle" onClick={() => setShowPassword((value) => !value)} aria-label={showPassword ? 'Hide password' : 'Show password'}>{showPassword ? <EyeOff size={20} /> : <Eye size={20} />}</button></label>
+        <div className="login-editorial-options"><label className="login-remember"><input type="checkbox" checked={remember} onChange={(event) => setRemember(event.target.checked)} /><span>{language === 'en' ? 'Remember me' : language === 'ar' ? 'تذكرني' : 'I xasuuso'}</span></label><button type="button" disabled={resetLoading} onClick={requestReset}>{resetLoading ? t('login.reset.sending') : t('login.forgot')}</button></div>
+        {error && <p role="alert" className="login-editorial-alert">{error}</p>}
+        {message && <p role="status" className="login-editorial-message">{message}</p>}
+        <button className="editorial-primary login-editorial-submit" disabled={loading}>{loading ? t('login.wait') : admin ? t('login.admin') : (language === 'en' ? 'Log In' : t('login.submit'))}<ArrowRight size={20} /></button>
       </form>
       {!admin && import.meta.env.VITE_DEMO_MODE === 'true' && <div className="mt-5 border-t border-slate-100 pt-4"><p className="mb-2 text-xs font-semibold text-slate-500">Dhex mar demo-ga</p><div className="grid grid-cols-2 gap-2"><button className={secondary} onClick={()=>{login('provider','demo');navigate('/provider-dashboard')}}>Provider demo</button><button className={secondary} onClick={()=>{login('admin','demo');navigate('/admin')}}>Admin demo</button></div></div>}
-      <div className="mt-4 flex justify-between text-sm">
-        <button type="button" disabled={resetLoading} onClick={requestReset} className="font-medium text-primary-700 disabled:opacity-50">{resetLoading ? t('login.reset.sending') : t('login.forgot')}</button>
-        {!admin && <Link to="/signup" className="font-semibold text-primary-700">{t('login.signup')}</Link>}
-      </div>
-      <div className="login-company mt-6 border-t border-slate-100 pt-4">
-        <img src="/jannat-avenir-logo.png" alt="" className="h-7 w-7 object-contain" />
-        <div>
-          <p className="text-[8px] font-semibold tracking-[0.12em] text-slate-400">DEVELOPED BY</p>
-          <p className="text-[10px] font-bold tracking-[0.04em] text-primary-800">JANNAT L?AVENIR</p>
-        </div>
-      </div>
+      {!admin && <p className="login-editorial-signup">{language === 'en' ? 'Don’t have an account?' : language === 'ar' ? 'ليس لديك حساب؟' : 'Akoon ma lihid?'} <Link to="/signup">{language === 'en' ? 'Sign Up' : t('login.signup')}<ArrowRight size={16} /></Link></p>}
+      <footer className="editorial-company login-editorial-company"><img src="/jannat-avenir-logo.png" alt="" /><span>JANNAT L’AVENIR</span></footer>
       {admin && <Link to="/login" className="mt-4 block text-center text-sm text-slate-500">{t('login.customerBack')}</Link>}
     </div>
   </div>

@@ -8,7 +8,7 @@ import { useLanguage } from '../context/LanguageContext'
 
 export default function Layout({ children }) {
   const { pathname } = useLocation()
-  const onboarding = pathname === '/welcome' || pathname === '/start' || (localStorage.getItem('heladeeg-onboarding-complete') !== 'true' && pathname === '/')
+  const onboarding = pathname === '/welcome' || (localStorage.getItem('heladeeg-onboarding-complete') !== 'true' && pathname === '/')
   const authPage = ['/login', '/signup', '/reset-password', '/admin/login'].includes(pathname)
   const hideAppNavigation = onboarding || authPage
   const { backendConfigured } = useApp()

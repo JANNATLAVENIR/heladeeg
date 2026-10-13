@@ -2,7 +2,7 @@ import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import { useApp } from './context/AppContext'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
-import { GetStartedPage, WelcomeChoicePage } from './pages/WelcomePages'
+import { GetStartedPage } from './pages/WelcomePages'
 import SearchPage from './pages/SearchPage'
 import ProviderProfilePage from './pages/ProviderProfilePage'
 import RequestServicePage from './pages/RequestServicePage'
@@ -38,7 +38,6 @@ export default function App() {
         <Route path="/" element={<EntryPage />} />
         <Route path="/welcome" element={<GetStartedPage />} />
         <Route path="/app" element={<HomePage />} />
-        <Route path="/start" element={<WelcomeChoicePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
