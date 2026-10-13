@@ -69,3 +69,15 @@ Haddii aad Expo Go wrapper-ka isticmaalayso, isla `.env.local` ayuu Vite ka akhr
 Login/signup, session/profile, category/provider akhris, codsi dirid/xaalad beddelid/claim, codsi provider, listing iyo availability, reviews, reports, admin go'aanka provider-ka/cabashada, notifications, iyo category CRUD waxay wacaan Supabase. Bogga maamulka isticmaalayaashu hadda wuxuu akhriyaa profiles-ka; xannibaad ama tirtirid user admin ah weli lama hirgelin. Dukumiintiyada provider-ka admin-ku wuxuu furan karaa iyadoo la adeegsanayo signed link gaaban.
 
 Database-ka remote-ka hore ayuu u lahaa schema-ga, RPC-yada, policies-ka RLS, buckets-ka iyo categories-ka ay migration/seed-kani qeexaan. Waxaan isbarbar dhignay schema-ga, kadibna migration version-ka `20261004000000` ayaan ku diiwaangelinnay CLI-ga si uu ula ekaado xaaladda remote-ka; DDL-ka dib looma orodin si miisas iyo xog hore loo ilaaliyo. `npx supabase migration list --linked` ayaa xaqiijiyey in local iyo remote versions-ku is waafaqaan. Build-ka app-ka waa guulaystay; weli waxaa habboon in la tijaabiyo Auth iyo socodka customer/provider/admin gudaha app-ka.
+
+## Website-ka PWA iyo Home Screen
+
+App-ku wuxuu leeyahay web manifest, icons, service worker iyo badhanka **Ku rakib** ee browser-rada taageera. Expo Go wrapper-ka iyo PWA-gu waxay wada isticmaalaan isla web app-ka.
+
+Si website-ka taleefanka loogu rakibo:
+
+1. Samee build-ka adigoo adeegsanaya `npm run build`, kadibna ku daabac `dist/` hosting leh HTTPS (tusaale Vercel, Netlify ama domain/server-kaaga).
+2. Browser-ka taleefanka ku fur URL-ka HTTPS ee la daabacay. Android/Chrome waxay muujin karaan **Ku rakib** ama **Install app**; iPhone/iPad Safari ka dooro **Share → Add to Home Screen**.
+3. Service worker-ku wuxuu kaydiyaa app shell-ka iyo faylasha frontend-ka si boggu u furmo marka internetku go'an yahay. Xogta Supabase waxay u baahan tahay internet.
+
+Localhost waxaa loo isticmaali karaa horumarinta, laakiin rakibidda website-ka taleefanka waxay u baahan tahay HTTPS. Marka release cusub la daabaco, beddel `CACHE_NAME` ee `public/sw.js` si browser-radu u soo qaataan faylasha cusub.

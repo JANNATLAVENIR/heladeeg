@@ -1,0 +1,17 @@
+{
+  "id": "/",
+  "name": "HelAdeeg — Adeegyada Muqdisho",
+  "short_name": "HelAdeeg",
+  "description": "Raadi adeeg-bixiyeyaal oo dir codsi adeeg Muqdisho.",
+  "lang": "so",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f8fafc",
+  "theme_color": "#0d9488",
+  "icons": [
+    { "src": "/icons/heladeeg-192.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icons/heladeeg-512.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
