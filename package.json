@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@esbuild/win32-x64": "^0.28.2",
     "@supabase/supabase-js": "^2.117.2",
     "expo": "~57.0.26",
     "expo-status-bar": "~57.0.1",
