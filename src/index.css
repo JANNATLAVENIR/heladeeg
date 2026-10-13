@@ -417,3 +417,98 @@ body { background: #f2eee7; color: #25231f; }
   .login-editorial-company { margin-top: 23px; }
 }
 @media (max-width:380px) { .login-card--editorial { padding: 21px 17px; } }
+
+
+/* Get Started landing page matched to the supplied HelAdeeg reference. */
+.welcome-luxe { display:block; width:100%; max-width:none; height:auto; min-height:100dvh; overflow:hidden; margin:0; padding:0; color:#1b1a18; background:linear-gradient(90deg,rgba(246,242,235,.94),rgba(246,242,235,.76)),url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1800&q=84') center 40% / cover fixed,#f3efe8; }
+.welcome-luxe-header { position:relative; z-index:5; display:flex; width:min(calc(100% - 64px),1320px); height:112px; align-items:center; justify-content:space-between; margin:auto; }
+.welcome-luxe-brand { display:grid; grid-template-columns:72px auto; grid-template-rows:auto auto; align-items:center; column-gap:18px; color:#111; }
+.welcome-luxe-monogram { position:relative; display:flex; grid-row:1 / span 2; width:72px; height:76px; align-items:center; justify-content:center; font-family:Georgia,'Times New Roman',serif; font-size:70px; line-height:1; }
+.welcome-luxe-monogram b { font-weight:700; }
+.welcome-luxe-monogram i { position:absolute; top:50%; left:50%; z-index:1; font-size:18px; font-style:normal; transform:translate(-50%,-50%); }
+.welcome-luxe-name { font-family:Georgia,'Times New Roman',serif; font-size:34px; letter-spacing:.24em; line-height:1; }
+.welcome-luxe-tag { display:flex; align-items:center; gap:10px; margin-top:8px; font-size:10px; font-weight:600; letter-spacing:.32em; }
+.welcome-luxe-tag i { width:3px; height:3px; border-radius:50%; background:currentColor; }
+.welcome-luxe-header-actions { display:flex; align-items:center; gap:24px; }
+.welcome-luxe-header-actions select { appearance:none; border:0; background:transparent; padding:8px; font-size:10px; letter-spacing:.1em; }
+.welcome-luxe-header-actions button { display:flex; align-items:center; gap:11px; border:0; background:transparent; color:#201e1b; font-size:14px; }
+.welcome-luxe-hero { display:grid; width:min(calc(100% - 64px),1320px); min-height:690px; grid-template-columns:.96fr 1.04fr; align-items:center; margin:auto; padding:22px 0 100px; }
+.welcome-luxe-copy { position:relative; z-index:3; max-width:570px; padding:0 0 14px; }
+.welcome-luxe-eyebrow { margin:0; color:#36322c; font-size:10px; font-weight:550; letter-spacing:.34em; line-height:1.5; }
+.welcome-luxe-copy h1 { margin:24px 0 0; color:#151412; font-family:Georgia,'Times New Roman',serif; font-size:clamp(46px,5.25vw,72px); font-weight:400; letter-spacing:-.045em; line-height:1.04; }
+.welcome-luxe-copy > p:last-child { max-width:455px; margin:23px 0 0; color:#66625d; font-size:clamp(15px,1.45vw,19px); line-height:1.8; }
+.welcome-luxe-visual { position:relative; display:flex; min-height:590px; align-items:center; justify-content:center; }
+.welcome-luxe-room { position:absolute; inset:2% -8% 0 4%; border-radius:48% 0 0 0; background:rgba(241,235,225,.16); }
+.welcome-luxe-phone { position:relative; z-index:2; width:clamp(245px,27vw,340px); height:clamp(480px,48vw,600px); margin:20px 0 0 -24px; padding:8px; border:4px solid #171614; border-radius:44px; background:linear-gradient(110deg,#55514a,#111110 25%,#34312b 83%); box-shadow:0 28px 55px rgba(17,16,14,.3),inset 1px 1px 2px #fff8; transform:rotate(4deg); }
+.welcome-luxe-screen { position:relative; height:100%; overflow:hidden; border-radius:34px; background:#f8f5ef; padding:13px 13px 0; color:#24221f; }
+.welcome-luxe-status { display:flex; justify-content:space-between; padding:0 4px; font-size:8px; font-weight:700; }.welcome-luxe-notch { position:absolute; top:9px; left:50%; width:65px; height:18px; border-radius:20px; background:#111; transform:translateX(-50%); }
+.welcome-luxe-brand--compact { display:flex; flex-direction:column; gap:2px; margin:15px 0 0; }.welcome-luxe-brand--compact .welcome-luxe-monogram { grid-row:auto; width:24px; height:24px; font-size:22px; }.welcome-luxe-brand--compact .welcome-luxe-monogram i { font-size:7px; }.welcome-luxe-brand--compact .welcome-luxe-name { font-size:9px; letter-spacing:.18em; }
+.welcome-luxe-location { margin:11px 0 9px; text-align:center; font-size:8px; }.welcome-luxe-search { display:flex; height:32px; align-items:center; gap:7px; border:1px solid #ded8cf; border-radius:20px; padding:0 10px; color:#777168; font-size:8px; }
+.welcome-luxe-promo { position:relative; display:flex; min-height:121px; flex-direction:column; justify-content:flex-end; margin-top:10px; border-radius:12px; background:linear-gradient(120deg,#777168,#b7ad9e); padding:11px; color:white; }.welcome-luxe-promo b { font-family:Georgia,'Times New Roman',serif; font-size:14px; font-weight:400; line-height:1.22; }.welcome-luxe-promo small { margin-top:7px; font-size:6px; }.welcome-luxe-promo i { position:absolute; right:11px; bottom:11px; display:grid; width:22px; height:22px; place-items:center; border-radius:50%; background:#ffffffb8; color:#25231f; font:14px Arial,sans-serif; }
+.welcome-luxe-popular { display:flex; justify-content:space-between; margin:14px 1px 8px; font-size:9px; }.welcome-luxe-popular span { color:#726d65; font-size:7px; }.welcome-luxe-mini-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }.welcome-luxe-mini-grid > div { display:flex; min-width:0; min-height:59px; flex-direction:column; align-items:center; justify-content:center; gap:5px; border:1px solid #eee8df; border-radius:9px; background:#fdfbf8; }.welcome-luxe-mini-grid small { max-width:95%; overflow:hidden; font-size:6px; text-overflow:ellipsis; white-space:nowrap; }
+.welcome-luxe-nav { position:absolute; right:0; bottom:0; left:0; display:flex; justify-content:space-around; border-top:1px solid #e9e3d9; background:#f8f5ef; padding:8px 3px 10px; font-size:12px; }.welcome-luxe-nav > span { display:grid; justify-items:center; gap:1px; }.welcome-luxe-nav small { font-size:6px; }
+.welcome-luxe-services { position:relative; z-index:4; width:min(calc(100% - 48px),1360px); margin:-44px auto 0; border-radius:32px 32px 0 0; background:rgba(250,247,242,.97); padding:38px clamp(24px,5vw,66px) 18px; box-shadow:0 -14px 45px rgba(58,47,34,.08); backdrop-filter:blur(18px); }
+.welcome-luxe-services-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:22px; }.welcome-luxe-services-heading h2 { max-width:500px; margin:8px 0 0; color:#1c1b19; font-family:Georgia,'Times New Roman',serif; font-size:clamp(28px,3.2vw,42px); font-weight:400; letter-spacing:-.035em; line-height:1.1; }.welcome-luxe-services-heading > button { display:flex; flex-shrink:0; align-items:center; gap:13px; border:0; background:transparent; color:#514c45; font-size:13px; }
+.welcome-luxe-service-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }.welcome-luxe-tile { display:grid; min-width:0; min-height:130px; grid-template-columns:1fr auto; grid-template-rows:1fr auto; align-items:center; gap:3px 8px; overflow:hidden; border:1px solid transparent; border-radius:17px; background:#f1ede6; padding:0 14px 11px; color:#272521; text-align:left; transition:transform .2s,background .2s; }.welcome-luxe-tile:hover { transform:translateY(-2px); background:#ebe5da; }.welcome-luxe-tile-photo { display:flex; min-height:92px; grid-column:1 / span 2; align-items:center; justify-content:center; border-radius:13px 13px 9px 9px; background-position:center 48%; background-size:cover; color:#554e43; }.welcome-luxe-tile-label { overflow:hidden; font-family:Georgia,'Times New Roman',serif; font-size:clamp(13px,1.25vw,17px); text-overflow:ellipsis; white-space:nowrap; }.welcome-luxe-tile > svg { color:#81796e; }
+.welcome-luxe-cta { position:relative; z-index:1; display:flex; width:min(100%,400px); min-height:62px; align-items:center; justify-content:center; gap:17px; margin:24px auto 0; border:0; border-radius:999px; background:#1d1c1a; padding:0 24px; color:#fff; font-size:16px; font-weight:500; box-shadow:0 8px 20px rgba(20,19,17,.12); }.welcome-luxe-company { display:flex; align-items:center; justify-content:center; gap:7px; margin:17px auto 0; color:#777168; font-size:9px; font-weight:600; letter-spacing:.32em; }.welcome-luxe-company img { width:20px; height:22px; object-fit:contain; }
+.welcome-luxe-tile { min-height:104px; grid-template-rows:1fr auto; padding:12px 16px; }
+.welcome-luxe-tile-icon { display:flex; grid-column:1 / span 2; align-items:center; justify-content:center; color:#554e43; }
+@media(max-width:760px) {
+  .welcome-luxe { background-attachment:scroll; }.welcome-luxe-header { width:calc(100% - 34px); height:76px; }.welcome-luxe-brand { grid-template-columns:42px auto; column-gap:9px; }.welcome-luxe-monogram { width:42px; height:49px; font-size:42px; }.welcome-luxe-monogram i { font-size:11px; }.welcome-luxe-name { font-size:21px; letter-spacing:.17em; }.welcome-luxe-tag { gap:6px; margin-top:5px; font-size:7px; letter-spacing:.19em; }.welcome-luxe-header-actions { gap:4px; }.welcome-luxe-header-actions select { padding:6px; font-size:9px; }.welcome-luxe-header-actions button { gap:5px; font-size:12px; }
+ .welcome-luxe-hero { width:calc(100% - 36px); min-height:auto; grid-template-columns:1fr; padding:20px 0 72px; }.welcome-luxe-copy { max-width:470px; padding:0; }.welcome-luxe-eyebrow { font-size:9px; letter-spacing:.24em; }.welcome-luxe-copy h1 { margin-top:14px; font-size:clamp(37px,9.8vw,58px); line-height:1.02; }.welcome-luxe-copy > p:last-child { max-width:360px; margin-top:13px; font-size:14px; line-height:1.65; }.welcome-luxe-visual { min-height:395px; margin-top:12px; }.welcome-luxe-room { inset:3% -5% 0 11%; border-radius:45% 0 0 0; }.welcome-luxe-phone { width:193px; height:370px; margin:10px 0 0 -5px; border-radius:34px; }.welcome-luxe-screen { border-radius:26px; padding:10px 10px 0; }.welcome-luxe-promo { min-height:82px; }.welcome-luxe-promo b { font-size:11px; }.welcome-luxe-popular { margin:10px 1px 6px; font-size:8px; }.welcome-luxe-mini-grid { gap:4px; }.welcome-luxe-mini-grid > div { min-height:48px; }.welcome-luxe-mini-grid small { font-size:5px; }
+ .welcome-luxe-services { width:calc(100% - 18px); margin-top:-32px; border-radius:24px 24px 0 0; padding:26px 17px 16px; }.welcome-luxe-services-heading { align-items:flex-end; margin-bottom:15px; }.welcome-luxe-services-heading h2 { max-width:250px; font-size:27px; }.welcome-luxe-services-heading > button { gap:5px; font-size:10px; }.welcome-luxe-services-heading > button svg { width:14px; }.welcome-luxe-service-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }.welcome-luxe-tile { min-height:87px; border-radius:13px; padding:10px 9px; }.welcome-luxe-tile-icon svg { width:23px; height:23px; }.welcome-luxe-tile-label { font-size:14px; }.welcome-luxe-cta { min-height:54px; margin-top:17px; }.welcome-luxe-company { font-size:8px; letter-spacing:.25em; }
+}
+@media(max-width:380px) { .welcome-luxe-header { width:calc(100% - 24px); }.welcome-luxe-brand { grid-template-columns:34px auto; column-gap:7px; }.welcome-luxe-monogram { width:34px; height:41px; font-size:34px; }.welcome-luxe-monogram i { font-size:9px; }.welcome-luxe-name { font-size:18px; }.welcome-luxe-tag { font-size:6px; }.welcome-luxe-copy h1 { font-size:35px; }.welcome-luxe-visual { min-height:345px; }.welcome-luxe-phone { width:174px; height:337px; } }
+/* Brand styling for the editorial login screen. */
+.login-card--editorial > div:first-child { margin-bottom: 0; }
+.login-card--editorial > .login-editorial-heading { margin-bottom: 29px; }
+.login-card--editorial > .login-editorial-heading h1 { margin: 0; color: #161512; font-family: Georgia,'Times New Roman',serif; font-size: clamp(36px,4.2vw,54px); font-weight: 400; letter-spacing: -.04em; line-height: 1.08; }
+.login-card--editorial > .login-editorial-heading p { max-width: 460px; margin: 14px 0 0; color: #77736e; font-size: 16px; line-height: 1.65; }
+.login-card--editorial > .login-editorial-heading > div { margin: 0; }
+.login-card--editorial > .login-editorial-heading > div > p:first-child { margin: 0; }
+.login-editorial-brand { display: grid; grid-template-columns: 1fr; justify-items: center; margin: 0 auto 55px; color: #090909; text-align: center; }
+.login-editorial-wordmark { margin-top: 4px; font-family: Georgia,'Times New Roman',serif; font-size: 30px; letter-spacing: .30em; }
+.login-editorial-tagline { display: flex; align-items: center; gap: 10px; margin-top: 8px; font-size: 10px; font-weight: 600; letter-spacing: .34em; }
+.login-editorial-tagline i { width: 4px; height: 4px; border-radius: 50%; background: #111; }
+@media (max-width:760px) {
+  .login-editorial-brand { margin-bottom: 28px; }
+  .login-editorial-wordmark { font-size: 21px; }
+  .login-editorial-tagline { margin-top: 6px; font-size: 8px; }
+  .login-card--editorial > .login-editorial-heading { margin-bottom: 21px; }
+  .login-card--editorial > .login-editorial-heading h1 { font-size: clamp(34px,9vw,44px); }
+  .login-card--editorial > .login-editorial-heading p { margin-top: 9px; font-size: 14px; line-height: 1.55; }
+}
+/* Keep the login form inside compact mobile viewports while allowing vertical scroll on short screens. */
+@media (max-width:760px) {
+  .login-page--editorial { align-items: flex-start; overflow-x: hidden; overflow-y: auto; }
+  .login-card--editorial { flex: 0 0 auto; }
+  .login-editorial-brand { margin-bottom: 22px; }
+  .login-editorial-heading { margin-bottom: 17px !important; }
+  .login-card--editorial > .login-editorial-heading p { margin-top: 7px; }
+  .login-editorial-form { gap: 10px; }
+  .login-editorial-field { min-height: 54px; }
+  .login-editorial-submit { min-height: 53px; }
+  .login-editorial-signup { margin-top: 15px; }
+  .login-editorial-company { margin-top: 17px; }
+}
+@media (max-width:760px) and (max-height:740px) {
+  .login-page--editorial { padding-top: max(10px,env(safe-area-inset-top)); padding-bottom: max(10px,env(safe-area-inset-bottom)); }
+  .login-card--editorial { padding-top: 16px; padding-bottom: 16px; }
+  .login-editorial-brand { margin-bottom: 14px; }
+  .login-editorial-wordmark { font-size: 18px; }
+  .login-editorial-tagline { margin-top: 4px; font-size: 7px; }
+  .login-card--editorial > .login-editorial-heading h1 { font-size: 32px; }
+  .login-card--editorial > .login-editorial-heading p { font-size: 13px; }
+}
+.login-editorial-monogram { display: block; height: 104px; color: #090909; font-family: Georgia,'Times New Roman',serif; font-size: 108px; font-weight: 700; line-height: .94; }
+@media (max-width:760px) { .login-editorial-monogram { height: 68px; font-size: 70px; } }
+@media (max-width:760px) and (max-height:740px) { .login-editorial-monogram { height: 48px; font-size: 52px; } }
+/* Refine the small company signature at the bottom of the login page. */
+.login-editorial-company { gap: 6px; margin-top: 18px; font-size: 8px; letter-spacing: .25em; }
+.login-editorial-company img { width: 18px; height: 19px; }
+.login-editorial-company span { position: relative; top: 2px; }
+@media (max-width:760px) {
+  .login-editorial-company { gap: 5px; margin-top: 13px; font-size: 7px; letter-spacing: .22em; }
+  .login-editorial-company img { width: 16px; height: 17px; }
+  .login-editorial-company span { top: 2px; }
+}

@@ -1,46 +1,96 @@
-import { ArrowRight, Clock3, Cog, House, Search, ShieldCheck, Wrench, Zap, Droplets } from 'lucide-react'
+import { ArrowRight, Brush, Droplets, Hammer, Paintbrush, Search, Sparkles, Truck, WashingMachine, Wrench, Zap } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import { useLanguage } from '../context/LanguageContext'
+import { useApp } from '../context/AppContext'
+import { categoryLabel, useLanguage } from '../context/LanguageContext'
+import { serviceCategories as demoCategories } from '../data/mockData'
+
+const icons = {
+  plumbing: Droplets, tuubooyin: Droplets,
+  electrical: Zap, koronto: Zap,
+  cleaning: Sparkles, nadiifin: Sparkles,
+  moving: Truck, gaarsiin: Truck,
+  painting: Paintbrush, rinjiyeyn: Paintbrush,
+  carpentry: Hammer, farsamo: Hammer,
+  'appliance-repair': WashingMachine, gardening: Brush,
+  makaanik: Wrench, 'dayactir-ac': Wrench,
+}
+
+function Brand({ compact = false }) {
+  return <div className={`welcome-luxe-brand${compact ? ' welcome-luxe-brand--compact' : ''}`}>
+    <span className="welcome-luxe-monogram" aria-hidden="true"><b>H</b><i>✦</i></span>
+    <span className="welcome-luxe-name">HELADEEG</span>
+    {!compact && <span className="welcome-luxe-tag">ALL SERVICES <i /> ONE APP</span>}
+  </div>
+}
 
 export function GetStartedPage() {
   const navigate = useNavigate()
   const { t, language, setLanguage } = useLanguage()
-  return (
-    <section className="welcome-page">
-      <div className="welcome-language">
-        <select aria-label={t('language.label')} value={language} onChange={(event) => setLanguage(event.target.value)}>
-          <option value="en">English</option><option value="so">Somali</option><option value="ar">العربية</option>
+  const { serviceCategories } = useApp()
+  const categories = (serviceCategories.length ? serviceCategories : demoCategories).slice(0, 8)
+  const goLogin = () => {
+    localStorage.setItem('heladeeg-onboarding-complete', 'true')
+    navigate('/login')
+  }
+  const skip = () => {
+    localStorage.setItem('heladeeg-onboarding-complete', 'true')
+    navigate('/app', { replace: true })
+  }
+
+  return <section className="welcome-luxe">
+    <header className="welcome-luxe-header">
+      <Brand />
+      <div className="welcome-luxe-header-actions">
+        <label className="sr-only" htmlFor="welcome-language">{t('language.label')}</label>
+        <select id="welcome-language" value={language} onChange={(event) => setLanguage(event.target.value)}>
+          <option value="en">EN</option><option value="so">SO</option><option value="ar">AR</option>
         </select>
+        <button onClick={skip}>{language === 'so' ? 'Ka gudub' : language === 'ar' ? 'تخطّ' : 'Skip'}<ArrowRight size={17} /></button>
       </div>
-      <header className="welcome-brand">
-        <div className="welcome-mark"><House size={62} strokeWidth={2.5} /><Wrench className="welcome-wrench" size={36} strokeWidth={3} /></div>
-        <h1>HELADEEG</h1>
-        <p>{t('welcome.tagline')}</p>
-      </header>
-      <div className="welcome-visual" aria-label={t('welcome.visualAlt')}>
-        <div className="welcome-skyline" />
-        <div className="trust-float"><span className="trust-icon"><ShieldCheck size={34} fill="currentColor" /></span><span><b>{t('welcome.trusted')}</b><small>{t('welcome.trustedHint')}</small></span></div>
-        <div className="fast-float"><span className="clock-icon"><Clock3 size={34} /></span><span><b>{t('welcome.fast')}</b><small>{t('welcome.fastHint')}</small></span></div>
-        <div className="phone-mockup">
-          <div className="phone-screen">
-            <div className="phone-notch" />
-            <div className="phone-brand">HELADEEG</div>
-            <div className="phone-search"><Search size={14} /><span>{t('welcome.search')}</span></div>
-            <div className="phone-services">
-              <div className="phone-service service-plumb"><Droplets size={26} /><span>{t('welcome.plumbing')}</span><ArrowRight size={14} /></div>
-              <div className="phone-service service-mech"><Cog size={27} /><span>{t('welcome.mechanic')}</span><ArrowRight size={14} /></div>
-              <div className="phone-service service-electric"><Zap size={27} /><span>{t('welcome.electrical')}</span><ArrowRight size={14} /></div>
-              <div className="phone-service service-general"><Wrench size={26} /><span>{t('welcome.repair')}</span><ArrowRight size={14} /></div>
-            </div>
+    </header>
+
+    <div className="welcome-luxe-hero">
+      <div className="welcome-luxe-copy">
+        <p className="welcome-luxe-eyebrow">{language === 'so' ? 'ADEEG-BIXIYAHAAGA LA AAMINI KARO' : language === 'ar' ? 'شريك الخدمات الموثوق' : 'YOUR TRUSTED SERVICE PARTNER'}</p>
+        <h1>{language === 'so' ? <>Hel xirfadlayaal<br />dayactir oo kuu dhow</> : language === 'ar' ? <>اعثر على خدمات<br />موثوقة بالقرب منك</> : <>Find Trusted<br />Repair &amp; Home<br />Services Near You</>}</h1>
+        <p>{language === 'so' ? 'Laga bilaabo tuubooyinka ilaa rinjiyeynta, HelAdeeg wuxuu kugu xidhayaa xirfadlayaal xirfad leh oo daboolaya baahiyaha gurigaaga.' : language === 'ar' ? 'من السباكة إلى الطلاء، يربطك HelAdeeg بمحترفين مهرة لجميع احتياجات منزلك.' : 'From plumbing to painting, Heladeeg connects you with skilled professionals for all your home and personal needs.'}</p>
+      </div>
+
+      <div className="welcome-luxe-visual" aria-label={t('welcome.visualAlt')}>
+        <div className="welcome-luxe-room" />
+        <div className="welcome-luxe-phone">
+          <div className="welcome-luxe-screen">
+            <div className="welcome-luxe-status"><span>9:41</span><span>● ◔ ▰</span></div>
+            <div className="welcome-luxe-notch" />
+            <Brand compact />
+            <div className="welcome-luxe-location">⌖ &nbsp; Mogadishu⌄</div>
+            <div className="welcome-luxe-search"><Search size={13} /><span>Search for a service...</span></div>
+            <div className="welcome-luxe-promo"><b>Quality Services<br />for a Better Home</b><small>Fast · Trusted · Professional</small><i>→</i></div>
+            <div className="welcome-luxe-popular"><b>Popular Services</b><span>View all</span></div>
+            <div className="welcome-luxe-mini-grid">{categories.slice(0, 6).map((category) => {
+              const Icon = icons[category.slug] || icons[category.id] || Wrench
+              return <div key={category.id}><Icon size={17} /><small>{categoryLabel(category, language)}</small></div>
+            })}</div>
+            <div className="welcome-luxe-nav"><span>⌂<small>Home</small></span><span>▤<small>Bookings</small></span><span>♡<small>Messages</small></span><span>♙<small>Profile</small></span></div>
           </div>
         </div>
-        <div className="toolbox"><div className="toolbox-handle"/><div className="toolbox-clasp"/><Wrench className="toolbox-wrench" size={86} strokeWidth={2.4}/></div>
       </div>
-      <button className="welcome-cta" onClick={() => (localStorage.setItem('heladeeg-onboarding-complete', 'true'), navigate('/login'))}>{t('welcome.getStarted')}<ArrowRight size={25}/></button>
-      <footer className="welcome-company" aria-label="App developer">
-        <img src="/jannat-avenir-logo.png" alt="" />
-        <span>JANNAT L’AVENIR</span>
-      </footer>
+    </div>
+
+    <section className="welcome-luxe-services">
+      <div className="welcome-luxe-services-heading">
+        <div><p className="welcome-luxe-eyebrow">{language === 'so' ? 'ADEEGYADEENNA' : language === 'ar' ? 'خدماتنا' : 'OUR SERVICES'}</p><h2>{language === 'so' ? 'Maxaad u baahan tahay?' : language === 'ar' ? 'ما الخدمة التي تحتاجها؟' : 'What Do You Need Help With?'}</h2></div>
+        <button onClick={() => { localStorage.setItem('heladeeg-onboarding-complete', 'true'); navigate('/search') }}>{language === 'so' ? 'Dhammaan adeegyada' : language === 'ar' ? 'كل الخدمات' : 'All services'}<ArrowRight size={18} /></button>
+      </div>
+      <div className="welcome-luxe-service-grid">{categories.map((category) => {
+        const Icon = icons[category.slug] || icons[category.id] || Wrench
+        return <button key={category.id} className="welcome-luxe-tile" onClick={() => { localStorage.setItem('heladeeg-onboarding-complete', 'true'); navigate(`/categories/${category.slug || category.id}`) }}>
+          <span className="welcome-luxe-tile-icon"><Icon size={27} strokeWidth={1.35} /></span>
+          <span className="welcome-luxe-tile-label">{categoryLabel(category, language)}</span><ArrowRight size={15} />
+        </button>
+      })}</div>
+      <button className="welcome-luxe-cta" onClick={goLogin}>{t('welcome.getStarted')}<ArrowRight size={21} /></button>
+      <footer className="welcome-luxe-company" aria-label="App developer"><img src="/jannat-avenir-logo.png" alt="" /><span>JANNAT L’AVENIR</span></footer>
     </section>
-  )
+  </section>
 }
