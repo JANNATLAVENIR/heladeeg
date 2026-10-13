@@ -80,11 +80,11 @@ export function GetStartedPage() {
     <section className="welcome-luxe-services">
       <div className="welcome-luxe-services-heading">
         <div><p className="welcome-luxe-eyebrow">{language === 'so' ? 'ADEEGYADEENNA' : language === 'ar' ? 'خدماتنا' : 'OUR SERVICES'}</p><h2>{language === 'so' ? 'Maxaad u baahan tahay?' : language === 'ar' ? 'ما الخدمة التي تحتاجها؟' : 'What Do You Need Help With?'}</h2></div>
-        <button onClick={() => { localStorage.setItem('heladeeg-onboarding-complete', 'true'); navigate('/search') }}>{language === 'so' ? 'Dhammaan adeegyada' : language === 'ar' ? 'كل الخدمات' : 'All services'}<ArrowRight size={18} /></button>
+        <button onClick={goLogin}>{language === 'so' ? 'Dhammaan adeegyada' : language === 'ar' ? 'كل الخدمات' : 'All services'}<ArrowRight size={18} /></button>
       </div>
       <div className="welcome-luxe-service-grid">{categories.map((category) => {
         const Icon = icons[category.slug] || icons[category.id] || Wrench
-        return <button key={category.id} className="welcome-luxe-tile" onClick={() => { localStorage.setItem('heladeeg-onboarding-complete', 'true'); navigate(`/categories/${category.slug || category.id}`) }}>
+        return <button key={category.id} className="welcome-luxe-tile" onClick={goLogin}>
           <span className="welcome-luxe-tile-icon"><Icon size={27} strokeWidth={1.35} /></span>
           <span className="welcome-luxe-tile-label">{categoryLabel(category, language)}</span><ArrowRight size={15} />
         </button>

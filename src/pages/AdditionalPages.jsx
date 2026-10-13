@@ -101,6 +101,7 @@ export function LoginPage({ admin = false }) {
       </form>
       {!admin && import.meta.env.VITE_DEMO_MODE === 'true' && <div className="mt-5 border-t border-slate-100 pt-4"><p className="mb-2 text-xs font-semibold text-slate-500">Dhex mar demo-ga</p><div className="grid grid-cols-2 gap-2"><button className={secondary} onClick={()=>{login('provider','demo');navigate('/provider-dashboard')}}>Provider demo</button><button className={secondary} onClick={()=>{login('admin','demo');navigate('/admin')}}>Admin demo</button></div></div>}
       {!admin && <p className="login-editorial-signup">{language === 'en' ? 'Don’t have an account?' : language === 'ar' ? 'ليس لديك حساب؟' : 'Akoon ma lihid?'} <Link to="/signup">{language === 'en' ? 'Sign Up' : t('login.signup')}<ArrowRight size={16} /></Link></p>}
+      {!admin && <button type="button" className="login-editorial-skip" onClick={() => { localStorage.setItem('heladeeg-onboarding-complete', 'true'); navigate('/app') }}>{language === 'so' ? 'Hadda ka gudub' : language === 'ar' ? 'تخطَّ الآن' : 'Skip now'}</button>}
       <footer className="editorial-company login-editorial-company"><img src="/jannat-avenir-logo.png" alt="" /><span>JANNAT L’AVENIR</span></footer>
       {admin && <Link to="/login" className="mt-4 block text-center text-sm text-slate-500">{t('login.customerBack')}</Link>}
     </div>

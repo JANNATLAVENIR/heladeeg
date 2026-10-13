@@ -512,3 +512,15 @@ body { background: #f2eee7; color: #25231f; }
   .login-editorial-company img { width: 16px; height: 17px; }
   .login-editorial-company span { top: 2px; }
 }
+/* Minimal full-screen login: remove the decorative room photo and glass card. */
+.auth-page-main:has(.login-page--editorial) { background: #f7f6f2; }
+.login-page--editorial { background: #f7f6f2; }
+.login-editorial-photo { display: none; }
+.login-card--editorial { width: min(100% - 40px, 540px); margin: auto; padding: 34px 0; }
+@media (max-width:760px) {
+  .login-page--editorial { background: #f7f6f2; }
+  .login-card--editorial { width: min(100% - 34px, 520px); margin: auto; border: 0; border-radius: 0; background: transparent; padding: 22px 0; box-shadow: none; backdrop-filter: none; }
+}
+.login-editorial-skip { display: block; margin: 10px auto 0; border: 0; background: transparent; padding: 7px 12px; color: #77736e; font-size: 13px; }
+.login-editorial-skip:hover { color: #1e1c19; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width:760px) { .login-editorial-skip { margin-top: 7px; font-size: 12px; } }
